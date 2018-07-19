@@ -25,7 +25,6 @@ public class ApkUtil {
 		Document document = null;
 		try{
 			byte[] bytes = AXMLPrinter2.getManifestXMLFromAPK(apkPath).getBytes(StandardCharsets.UTF_8);
-			System.out.println(bytes.toString());
 			InputStream stream = new ByteArrayInputStream(bytes);
 			document = builder.build(stream);
 		}catch (Exception e) {
