@@ -24,7 +24,9 @@ public class ApkUtil {
 		SAXBuilder builder = new SAXBuilder();
 		Document document = null;
 		try{
-			InputStream stream = new ByteArrayInputStream(AXMLPrinter.getManifestXMLFromAPK(apkPath).getBytes(StandardCharsets.UTF_8));
+			byte[] bytes = AXMLPrinter2.getManifestXMLFromAPK(apkPath).getBytes(StandardCharsets.UTF_8);
+			System.out.println(bytes.toString());
+			InputStream stream = new ByteArrayInputStream(bytes);
 			document = builder.build(stream);
 		}catch (Exception e) {
 			e.printStackTrace();

@@ -4,7 +4,7 @@ jar{
     //项目名，也是生成的jar的名字
     baseName = "GetApkInfo"
     //项目版本号，这部分内容会写进manifest
-    version = "1.0"
+    version = "2.0"
     //项目的manifest定义，其中就包含最关键的入口类定义
     manifest {
         attributes 'Main-Class': 'com.bihe0832.packageinfo.Main'
@@ -31,6 +31,11 @@ sourceSets.main.resources {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':CheckAndroidV2SignatureByAPKSig')
+    compile 'com.google.guava:guava:25.1-jre'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    compile group: 'xpp3', name: 'xpp3', version: '1.1.4c'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.13'
 }
 
 //导出未混淆Jar

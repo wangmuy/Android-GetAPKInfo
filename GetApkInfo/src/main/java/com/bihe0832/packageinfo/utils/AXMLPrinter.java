@@ -55,46 +55,62 @@ public class AXMLPrinter {
 				switch (type) {
 					case XmlPullParser.START_DOCUMENT:
 					{
-						log(xmlSb,"<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+					    try {
+                            log(xmlSb, "<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+                        } catch(Exception e) {
+					        //ignore
+                        }
 						break;
 					}
 					case XmlPullParser.START_TAG:
 					{
-						log(false,xmlSb,"%s<%s%s",sb,
-							getNamespacePrefix(parser.getPrefix()),parser.getName());
-						sb.append(indentStep);
-						
-						int namespaceCountBefore=parser.getNamespaceCount(parser.getDepth()-1);
-						int namespaceCount=parser.getNamespaceCount(parser.getDepth());
-						
-						for (int i=namespaceCountBefore;i!=namespaceCount;++i) {
-							log(xmlSb,"%sxmlns:%s=\"%s\"",
-								i==namespaceCountBefore?"  ":sb,
-								parser.getNamespacePrefix(i),
-								parser.getNamespaceUri(i));
-						}
-						
-						for (int i=0,size=parser.getAttributeCount();i!=size;++i) {
-							log(false,xmlSb, "%s%s%s=\"%s\""," ",
-								getNamespacePrefix(parser.getAttributePrefix(i)),
-								parser.getAttributeName(i),
-								getAttributeValue(parser,i));
-						}
+					    try {
+                            log(false, xmlSb, "%s<%s%s", sb,
+                                    getNamespacePrefix(parser.getPrefix()), parser.getName());
+                            sb.append(indentStep);
+
+                            int namespaceCountBefore = parser.getNamespaceCount(parser.getDepth() - 1);
+                            int namespaceCount = parser.getNamespaceCount(parser.getDepth());
+
+                            for (int i = namespaceCountBefore; i != namespaceCount; ++i) {
+                                log(xmlSb, "%sxmlns:%s=\"%s\"",
+                                        i == namespaceCountBefore ? "  " : sb,
+                                        parser.getNamespacePrefix(i),
+                                        parser.getNamespaceUri(i));
+                            }
+
+                            for (int i = 0, size = parser.getAttributeCount(); i != size; ++i) {
+                                log(false, xmlSb, "%s%s%s=\"%s\"", " ",
+                                        getNamespacePrefix(parser.getAttributePrefix(i)),
+                                        parser.getAttributeName(i),
+                                        getAttributeValue(parser, i));
+                            }
 //						log("%s>",sb);
-						log(xmlSb,">");
+                            log(xmlSb, ">");
+                        } catch(Exception e) {
+					        //ignore
+                        }
 						break;
 					}
 					case XmlPullParser.END_TAG:
 					{
-						sb.setLength(sb.length()-indentStep.length());
-						log(xmlSb,"%s</%s%s>",sb,
-							getNamespacePrefix(parser.getPrefix()),
-							parser.getName());
+					    try {
+                            sb.setLength(sb.length() - indentStep.length());
+                            log(xmlSb, "%s</%s%s>", sb,
+                                    getNamespacePrefix(parser.getPrefix()),
+                                    parser.getName());
+                        } catch(Exception e) {
+					        // ignore
+                        }
 						break;
 					}
 					case XmlPullParser.TEXT:
 					{
-						log(xmlSb,"%s%s",sb,parser.getText());
+					    try {
+                            log(xmlSb, "%s%s", sb, parser.getText());
+                        } catch(Exception e) {
+					        // ignore
+                        }
 						break;
 					}
 				}
