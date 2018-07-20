@@ -36,6 +36,7 @@ public class Main {
             return;
         } else if(params[0].toLowerCase().endsWith(".apk")){
         	getApkInfo(params[0]);
+//        	getApkInfo(params[1]);
             return;
         }else{
 			showFailedCheckResult(RET_FILE_NOT_GOOD, params[0] +"is not an android apk file");
@@ -49,6 +50,7 @@ public class Main {
 		try {
 			ApkUtil.getApkInfo(filePath, info);
 		} catch(Exception e){
+			e.printStackTrace();
 			showFailedCheckResult(RET_GET_INFO_BAD,"get channel and apkinfo failed, throw an Exception");
 			return;
 		}
