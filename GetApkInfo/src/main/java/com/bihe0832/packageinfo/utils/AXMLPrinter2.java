@@ -56,6 +56,7 @@ public class AXMLPrinter2 {
 
         ExtFile apkFile = new ExtFile(new File(apkPath));
         ResTable resTable = sAndrolib.getResTable(apkFile, true);
+        resTable.setAnalysisMode(true);
         ResAttrDecoder attrDecoder = sAxmlParser.getAttrDecoder();
         attrDecoder.setCurrentPackage(resTable.listMainPackages().iterator().next());
 
