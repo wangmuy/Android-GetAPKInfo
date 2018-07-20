@@ -1,5 +1,22 @@
 # AndroidGetAPKInfo
 
+## 感谢
+
+GetApkInfo-2.0 使用了 [iBotPeaches/Apktool](https://github.com/iBotPeaches/Apktool/tree/v2.3.3). 感谢 Apktool.
+
+### GetApkInfo-2.0.jar
+
+	➜  java -jar ./GetApkInfo-2.0.jar ./my.apk
+	执行结果: 成功
+    应用信息:
+    包名: test.dropbox
+    版本名: 1.0
+    版本号: 1
+    签名文件MD5: f1859463f1839ff04e5643d79c341694
+    V1签名验证通过: true
+    使用V2签名: true
+    V2签名验证通过: true
+
 ## 项目简介
 
 作为基于Android平台的渠道SDK的开发者或者联调同学每天都会面对大量的apk，需要检查他们的包名（packageName）、版本(versionName\versionCode)、应用签名(Signature)等信息，尤其现在Android的V2签名认证(APK Signature Scheme v2)带来的问题更多，为了提高工作效率，整理了一个获取应用基本信息的系列工具集。
