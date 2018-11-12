@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 
 import org.json.JSONObject;
 
-import com.android.apksigner.ApkSignerTool;
+//import com.android.apksigner.ApkSignerTool;
 import com.bihe0832.packageinfo.bean.ApkInfo;
 import com.bihe0832.packageinfo.getSignature.GetSignature;
 import com.bihe0832.packageinfo.utils.ApkUtil;
@@ -54,20 +54,20 @@ public class Main {
 			showFailedCheckResult(RET_GET_INFO_BAD,"get channel and apkinfo failed, throw an Exception");
 			return;
 		}
-		String v2Signature = ApkSignerTool.verify(filePath);
-		
-		try{
-			JSONObject jsonobject = new JSONObject(v2Signature);  
-			info.isV1SignatureOK = jsonobject.getBoolean(ApkSignerTool.KEY_RESULT_IS_V1_OK);
-			info.isV2Signature = jsonobject.getBoolean(ApkSignerTool.KEY_RESULT_IS_V2);
-			info.isV2SignatureOK = jsonobject.getBoolean(ApkSignerTool.KEY_RESULT_IS_V2_OK);
-			info.v2CheckErrorInfo = jsonobject.getString(ApkSignerTool.KEY_RESULT_MSG);
-			info.signature = GetSignature.getApkSignInfo(filePath);
-			info.v2CheckErrorInfo = jsonobject.getString(ApkSignerTool.KEY_RESULT_MSG);
-		}catch(Exception e){
-			showFailedCheckResult(RET_GET_INFO_BAD,"get apk info failed, throw an Exception:" + e.toString());
-			return;
-		}
+//		String v2Signature = ApkSignerTool.verify(filePath);
+//
+//		try{
+//			JSONObject jsonobject = new JSONObject(v2Signature);
+//			info.isV1SignatureOK = jsonobject.getBoolean(ApkSignerTool.KEY_RESULT_IS_V1_OK);
+//			info.isV2Signature = jsonobject.getBoolean(ApkSignerTool.KEY_RESULT_IS_V2);
+//			info.isV2SignatureOK = jsonobject.getBoolean(ApkSignerTool.KEY_RESULT_IS_V2_OK);
+//			info.v2CheckErrorInfo = jsonobject.getString(ApkSignerTool.KEY_RESULT_MSG);
+//			info.signature = GetSignature.getApkSignInfo(filePath);
+//			info.v2CheckErrorInfo = jsonobject.getString(ApkSignerTool.KEY_RESULT_MSG);
+//		}catch(Exception e){
+//			showFailedCheckResult(RET_GET_INFO_BAD,"get apk info failed, throw an Exception:" + e.toString());
+//			return;
+//		}
 		showSuccssedCheckResult(info);
 	}
 	

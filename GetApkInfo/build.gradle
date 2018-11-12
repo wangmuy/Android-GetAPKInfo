@@ -1,5 +1,8 @@
 apply plugin: 'java'
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 jar{
     //项目名，也是生成的jar的名字
     baseName = "GetApkInfo"
@@ -30,8 +33,9 @@ sourceSets.main.resources {
 //代码依赖
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':CheckAndroidV2SignatureByAPKSig')
-    compile 'com.google.guava:guava:25.1-jre'
+    // compile project(':CheckAndroidV2SignatureByAPKSig')
+    // 使用 20.0 兼容 jdk1.7: https://github.com/google/guava/wiki/Release21#java-8
+    compile 'com.google.guava:guava:20.0'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
     compile group: 'xpp3', name: 'xpp3', version: '1.1.4c'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
