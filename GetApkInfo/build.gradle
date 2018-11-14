@@ -3,6 +3,13 @@ apply plugin: 'java'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
+processResources {
+    from('src/main/resources/') {
+        include '**/*.jar'
+    }
+    includeEmptyDirs = false
+}
+
 jar{
     //项目名，也是生成的jar的名字
     baseName = "GetApkInfo"
